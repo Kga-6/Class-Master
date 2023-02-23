@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
+
+#PAGE: https://kga-6.github.io/SatureProject/
+
 * text=auto

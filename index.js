@@ -1,30 +1,38 @@
 const scheduleDay = "A"
 const scheduleDays = ["A","B","C","D"]
 
-import studentData from './data/students.json' assert { type: 'json' };
-
 const classesContainer = document.getElementById("classes-container")
 const studentDataDisplay = document.getElementById("student-Data-Display")
 
-studentDataDisplay.textContent = `Student: ${studentData.name+" "+studentData.lastName} `
+async function Test(){
 
-console.log(studentData.name, " meets these classes today:")
-let meetClasses = []
-studentData.classes.forEach(cls => {
+  fetch('./data/students.json').then(response => response.json())
+    .then(data => {
+      console.log(data)
 
-  cls.meeting.forEach(day => {
-    if(day === scheduleDay){
-      console.log(cls.class)
-      const li = document.createElement('li')
-      li.textContent = cls.class
-      meetClasses.push(li)
-    }
-  })
-})
+      studentDataDisplay.textContent = `Student: ${data.name+" "+data.lastName} `
 
-console.log(meetClasses)
 
-meetClasses.forEach(cls => {
-  classesContainer.append(cls)
-})
+      console.log(data.name, " meets these classes today:")
+      let meetClasses = []
+      data.classes.forEach(cls => {
+
+        cls.meeting.forEach(day => {
+          if(day === scheduleDay){
+            const li = document.createElement('li')
+            li.textContent = cls.class
+            meetClasses.push(li)
+          }
+        })
+      })
+
+      meetClasses.forEach(cls => {
+        classesContainer.append(cls)
+      })
+
+
+    })
+
+}
+Test()
 
