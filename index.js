@@ -1,38 +1,44 @@
-const scheduleDay = "A"
-const scheduleDays = ["A","B","C","D"]
-
 const classesContainer = document.getElementById("classes-container")
 const studentDataDisplay = document.getElementById("student-Data-Display")
 
-async function Test(){
+const fetchStudentData = async () => {
+  const studentData = await fetch('./data/students.json')
+  const studentDataJSON = await studentData.json()
+  return studentDataJSON
+}
 
-  fetch('./data/students.json').then(response => response.json())
-    .then(data => {
-      console.log(data)
+const fetchSchedule = async () => {
+  const schedule = await fetch('./data/schedule.json')
+  const scheduleJSON = await schedule.json()
+  return scheduleJSON
+}
 
-      studentDataDisplay.textContent = `Student: ${data.name+" "+data.lastName} `
+const App = async() => {
+  let studentData = await fetchStudentData()
+  let schedule = await fetchSchedule() 
 
+  console.log(studentData,schedule)
 
-      console.log(data.name, " meets these classes today:")
-      let meetClasses = []
-      data.classes.forEach(cls => {
+  studentDataDisplay.textContent = `Student: ${studentData.name+" "+studentData.lastName} `
 
-        cls.meeting.forEach(day => {
-          if(day === scheduleDay){
-            const li = document.createElement('li')
-            li.textContent = cls.class
-            meetClasses.push(li)
-          }
-        })
-      })
+  console.log(studentData.name, " meets these classes today:")
+  let meetClasses = []
+  studentData.classes.forEach(cls => {
 
-      meetClasses.forEach(cls => {
-        classesContainer.append(cls)
-      })
-
-
+    cls.meeting.forEach(day => {
+      if(day === schedule.CurrentDay){
+        const li = document.createElement('li')
+        li.textContent = cls.class
+        meetClasses.push(li)
+      }
     })
+  })
+
+  meetClasses.forEach(cls => {
+    classesContainer.append(cls)
+  })
 
 }
-Test()
+
+App()
 
