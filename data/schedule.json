@@ -1,5 +1,5 @@
 {
-  "CurrentDay":"A",
+  "CurrentDay":"B",
   "Days":["A","B","C","D"],
   "DaysMeet":{
     "A":[1,2,3,5,6,7],
