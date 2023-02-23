@@ -1,0 +1,36 @@
+{
+  "name":"Kevin",
+  "lastName":"Guerrero",
+  "Lunch":{
+    "A":"1",
+    "B":"2",
+    "C":"2",
+    "D":"1"
+  },
+  "classes":[
+    {
+      "class":"Consumer Math",
+      "period":7,
+      "teacher":"Kimberly Becher",
+      "meeting":["A","B","C"]
+    },
+    {
+      "class":"Health and Phys Ed 4",
+      "period":6,
+      "teacher":"Pat Esemplare",
+      "meeting":["A","B","D"]
+    },
+    {
+      "class":"Contemporary Literature",
+      "period":5,
+      "teacher":"Karly LoSasso",
+      "meeting":["A","C","D"]
+    },
+    {
+      "class":"Filem Appreciation",
+      "period":8,
+      "teacher":"Ernie Rockelman",
+      "meeting":["B","C","D"]
+    }
+  ]
+}
