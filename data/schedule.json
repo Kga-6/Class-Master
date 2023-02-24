@@ -10,6 +10,7 @@
 
   "BellSchedule":{
     "Time":{
+      "Dismissal":"2:24",
       "WarningBell":"7:35",
       "ZeroPeriod":{
         "S1":["7:40","8:05"],

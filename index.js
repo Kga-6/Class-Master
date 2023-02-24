@@ -114,6 +114,10 @@ function setClasses(studentData,schedule){
 
 }
 
+function dismissal(){
+  console.log("School is over!")
+}
+
 const App = async() => {
   let studentData = await fetchStudentData()
   let schedule = await fetchSchedule() 
@@ -122,12 +126,14 @@ const App = async() => {
 
   // This function will set the classes the student will meet 
   setClasses(studentData,schedule)
+  startClock(studentData.Lunch[schedule.CurrentDay])
 
   selectSchoolDay.addEventListener("change",function(event){
     schedule.CurrentDay = event.target.value
 
     // This function will set the classes the student will meet 
     setClasses(studentData,schedule)
+    startClock(studentData.Lunch[schedule.CurrentDay])
 
   })
 
