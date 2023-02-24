@@ -1,7 +1,7 @@
 const classesContainer = document.getElementById("classes-container")
 const selectSchoolDay = document.getElementById("select-school-day")
 
-let currentDay = "B"
+let currentDay = "A"
 
 function setClasses(studentData,schedule){
   let meetClasses = []
@@ -21,7 +21,7 @@ function setClasses(studentData,schedule){
   studentData.classes.forEach(myClass => {
 
     myClass.meeting.forEach(day => {
-      if(day === currentDay){
+      if(day == currentDay){
 
         meetClasses.push(myClass)
 
