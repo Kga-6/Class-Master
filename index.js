@@ -114,6 +114,7 @@ function setClasses(studentData,schedule){
 
 }
 
+// This function is called when school is over [caller: clock.js]
 function dismissal(){
   console.log("School is over!")
 }
