@@ -9,10 +9,34 @@
   },
   "classes":[
     {
-      "class":"Consumer Math",
-      "period":7,
-      "teacher":"Kimberly Becher",
+      "class":"Dropped",
+      "period":1,
+      "teacher":"Unknown",
+      "meeting":["A","C","D"]
+    },
+    {
+      "class":"Dropped",
+      "period":2,
+      "teacher":"Unknown",
+      "meeting":["A","B","D"]
+    },
+    {
+      "class":"Dropped",
+      "period":3,
+      "teacher":"Unknown",
       "meeting":["A","B","C"]
+    },
+    {
+      "class":"Dropped",
+      "period":4,
+      "teacher":"Unknown",
+      "meeting":["B","C","D"]
+    },
+    {
+      "class":"Contemporary Literature",
+      "period":5,
+      "teacher":"Karly LoSasso",
+      "meeting":["A","C","D"]
     },
     {
       "class":"Health and Phys Ed 4",
@@ -21,10 +45,10 @@
       "meeting":["A","B","D"]
     },
     {
-      "class":"Contemporary Literature",
-      "period":5,
-      "teacher":"Karly LoSasso",
-      "meeting":["A","C","D"]
+      "class":"Consumer Math",
+      "period":7,
+      "teacher":"Kimberly Becher",
+      "meeting":["A","B","C"]
     },
     {
       "class":"Filem Appreciation",
