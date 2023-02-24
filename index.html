@@ -11,9 +11,17 @@
 <body>
 
   <h1>Absegami High School Schedule</h1>
-  <p id="current-day">loading...</p>
 
-  <label>Classes:</label>
+  <span>Day:</span> 
+  <select id="select-school-day">
+    <option>No school today</option>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+    <option>D</option>
+  </select>
+
+  <h2>Classes:</h2>
   <ul id="classes-container"></ul>
 
   <script src="./utils/fetch.js"></script> 

@@ -1,13 +1,20 @@
 const classesContainer = document.getElementById("classes-container")
-const currentDayEl = document.getElementById("current-day")
+const selectSchoolDay = document.getElementById("select-school-day")
 
 function setClasses(studentData,schedule){
   let meetClasses = []
   let olderList = []
   let myLunch = studentData.Lunch[schedule.CurrentDay]
   let addedLunch = false
+  let block = 1
 
-  console.log(myLunch)
+  //Clear the container
+  let lastEl = classesContainer.lastElementChild
+  while(lastEl){
+    classesContainer.removeChild(lastEl)
+    lastEl = classesContainer.lastElementChild
+  }
+  
   // get the classes the student will meet
   studentData.classes.forEach(myClass => {
 
@@ -20,8 +27,6 @@ function setClasses(studentData,schedule){
     })
 
   })
-
-  console.log(meetClasses)
 
   // older sort the student classes
   schedule.DaysMeet[schedule.CurrentDay].forEach(index => {
@@ -64,8 +69,6 @@ function setClasses(studentData,schedule){
   homeroom.textContent = `Homeroom ${schedule.BellSchedule.Time.Homeroom[0]}-${schedule.BellSchedule.Time.Homeroom[1]}`
   classesContainer.append(homeroom)
 
-  let block = 1
-
   olderList.forEach(myClass => {
     const div = document.createElement('div')
     if(myClass.class === "Lunch"){
@@ -79,8 +82,9 @@ function setClasses(studentData,schedule){
 
       div.textContent = `${myClass.class} | ${timeText}`
     }else{
-      let timeText = ""
 
+      // Get the class time
+      let timeText = ""
       if(block === 1){
         timeText = `${schedule.BellSchedule.Time.block1[0]}-${schedule.BellSchedule.Time.block1[1]}`
       }else if(block === 2){
@@ -112,10 +116,18 @@ const App = async() => {
   let studentData = await fetchStudentData()
   let schedule = await fetchSchedule() 
 
-  currentDayEl.textContent = `${schedule.CurrentDay} Day`
+  selectSchoolDay.value = schedule.CurrentDay
 
   // This function will set the classes the student will meet 
   setClasses(studentData,schedule)
+
+  selectSchoolDay.addEventListener("change",function(event){
+    schedule.CurrentDay = event.target.value
+
+    // This function will set the classes the student will meet 
+    setClasses(studentData,schedule)
+
+  })
 
 }
 
