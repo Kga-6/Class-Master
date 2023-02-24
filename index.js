@@ -1,10 +1,12 @@
 const classesContainer = document.getElementById("classes-container")
 const selectSchoolDay = document.getElementById("select-school-day")
 
+let currentDay = "B"
+
 function setClasses(studentData,schedule){
   let meetClasses = []
   let olderList = []
-  let myLunch = studentData.Lunch[schedule.CurrentDay]
+  let myLunch = studentData.Lunch[currentDay]
   let addedLunch = false
   let block = 1
 
@@ -19,7 +21,7 @@ function setClasses(studentData,schedule){
   studentData.classes.forEach(myClass => {
 
     myClass.meeting.forEach(day => {
-      if(day === schedule.CurrentDay){
+      if(day === currentDay){
 
         meetClasses.push(myClass)
 
@@ -29,7 +31,7 @@ function setClasses(studentData,schedule){
   })
 
   // older sort the student classes
-  schedule.DaysMeet[schedule.CurrentDay].forEach(index => {
+  schedule.DaysMeet[currentDay].forEach(index => {
     meetClasses.forEach(myClass => {
       if(myClass.period === index){
          
@@ -116,13 +118,13 @@ const App = async() => {
   let studentData = await fetchStudentData()
   let schedule = await fetchSchedule() 
 
-  selectSchoolDay.value = schedule.CurrentDay
+  selectSchoolDay.value = currentDay
 
   // This function will set the classes the student will meet 
   setClasses(studentData,schedule)
 
   selectSchoolDay.addEventListener("change",function(event){
-    schedule.CurrentDay = event.target.value
+    currentDay = event.target.value
 
     // This function will set the classes the student will meet 
     setClasses(studentData,schedule)
