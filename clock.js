@@ -1,11 +1,34 @@
 const timerEl = document.getElementById("timer")
-
-function formtTime(time){
-  return time<10 ? "0"+time : time
-}
+let countdown
 
 function startClock(myLunch){
   let isSchoolOver = false
+
+  if(countdown){
+    clearInterval(countdown)
+  }
+
+  function formtTime(time){
+    return time<10 ? "0"+time : time
+  }
+  
+  function currentClass(classname){
+    const classEl = document.getElementById(classname)
+    classEl.classList.add("currentClass")
+
+    // add a new className to the classes that are over for styling
+    const classEls = document.getElementsByClassName("class")
+    for(i=0;i<classEls.length;i++){
+      const indexClass = classEls[i]
+
+      if(classEls[i].id === classname){
+        break
+      }else{
+        indexClass.classList.add("classOver")
+      }
+    }
+
+  }
 
   const timeChain = {
 
@@ -33,7 +56,7 @@ function startClock(myLunch){
     dismissal:new Date().setHours(14,24),
   }
 
-  const countdown = setInterval(function(){
+  countdown = setInterval(function(){
 
     let myTime = new Date().getTime()
     let timeleft
@@ -44,24 +67,33 @@ function startClock(myLunch){
     }else if(timeChain.zeroPeriod-myTime >= 0){
       console.log("zeroPeriod bell")
       timeleft = timeChain.zeroPeriod - myTime;
+      currentClass("zeroperiod")
     }else if(timeChain.homeroom-myTime >= 0){
       timeleft = timeChain.homeroom - myTime;
+      currentClass("homeroom")
     }else if(timeChain.block1-myTime >= 0){
       timeleft = timeChain.block1 - myTime;
+      currentClass("block1")
     }else if(timeChain.block2-myTime >= 0){
       timeleft = timeChain.block2 - myTime;
+      currentClass("block2")
     }else if(timeChain.block3-myTime >= 0){
       timeleft = timeChain.block3 - myTime;
+      currentClass("block3")
     }else if(myLunch==="1"){
 
       if(timeChain.lunch1-myTime >= 0){
         timeleft = timeChain.lunch1 - myTime;
+        currentClass("lunch")
       }else if(timeChain.lunchB-myTime >= 0){
         timeleft = timeChain.lunchB - myTime;
+        currentClass("block4")
       }else if(timeChain.block5-myTime >= 0){
         timeleft = timeChain.block5 - myTime;
+        currentClass("block5")
       }else if(timeChain.dismissal-myTime >= 0){
         timeleft = timeChain.dismissal - myTime;
+        currentClass("block6")
       }else{
         isSchoolOver = true
         clearInterval(countdown)
@@ -69,14 +101,18 @@ function startClock(myLunch){
 
     }else if(myLunch==="2"){
 
-      if(timeChain.lunch2-myTime >= 0){
-        timeleft = timeChain.lunch2 - myTime;
-      }else if(timeChain.lunchA-myTime >= 0){
+      if(timeChain.lunchA-myTime >= 0){
         timeleft = timeChain.lunchA - myTime;
+        currentClass("lunch")
+      }else if(timeChain.lunch2-myTime >= 0){
+        timeleft = timeChain.lunch2 - myTime;
+        currentClass("block4")
       }else if(timeChain.block5-myTime >= 0){
         timeleft = timeChain.block5 - myTime;
+        currentClass("block5")
       }else if(timeChain.dismissal-myTime >= 0){
         timeleft = timeChain.dismissal - myTime;
+        currentClass("block6")
       }else{
         isSchoolOver = true
         clearInterval(countdown)
@@ -88,10 +124,13 @@ function startClock(myLunch){
         timeleft = timeChain.test - myTime;
       }else if(timeChain.test1-myTime >= 0){
         timeleft = timeChain.test1 - myTime;
+        currentClass("block4")
       }else if(timeChain.test2-myTime >= 0){
         timeleft = timeChain.test2 - myTime;
+        currentClass("block5")
       }else if(timeChain.test3-myTime >= 0){
         timeleft = timeChain.test3 - myTime;
+        currentClass("block6")
       }else{
         isSchoolOver = true
         clearInterval(countdown)
