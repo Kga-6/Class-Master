@@ -4,28 +4,28 @@ let isSchoolOver = false
 
 const timeChain = {
 
-  test:new Date().setHours(24,33),
-  test1:new Date().setHours(24,34),
-  test2:new Date().setHours(24,35),
-  test3:new Date().setHours(24,36),
+  test:new Date().setHours(24,33,0),
+  test1:new Date().setHours(24,34,0),
+  test2:new Date().setHours(24,35,0),
+  test3:new Date().setHours(24,36,0),
 
-  warning:new Date().setHours(7,35),
-  zeroPeriod:new Date().setHours(8,35),
-  homeroom:new Date().setHours(8,48),
+  warning:new Date().setHours(7,35,0),
+  zeroPeriod:new Date().setHours(8,35,0),
+  homeroom:new Date().setHours(8,48,0),
 
-  block1:new Date().setHours(9,40),
-  block2:new Date().setHours(10,32),
-  block3:new Date().setHours(11,24),
+  block1:new Date().setHours(9,40,0),
+  block2:new Date().setHours(10,32,0),
+  block3:new Date().setHours(11,24,0),
 
-  lunch1:new Date().setHours(11,48),
-  lunchB:new Date().setHours(12,40),
+  lunch1:new Date().setHours(11,48,0),
+  lunchB:new Date().setHours(12,40,0),
 
-  lunch2:new Date().setHours(12,16),
-  lunchA:new Date().setHours(12,40),
+  lunch2:new Date().setHours(12,16,0),
+  lunchA:new Date().setHours(12,40,0),
 
-  block5:new Date().setHours(13,32),
+  block5:new Date().setHours(13,32,0),
 
-  dismissal:new Date().setHours(14,24),
+  dismissal:new Date().setHours(14,24,0),
 }
 
 function formtTime(time){
