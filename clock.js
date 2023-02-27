@@ -36,19 +36,18 @@ function formtTime(time){
 
 function currentClass(classname){
   const classEl = document.getElementById(classname)
-  classEl.classList.add("currentClass")
 
   // add a new className to the classes that are over for styling
-  const classEls = document.getElementsByClassName("class")
-  for(i=0;i<classEls.length;i++){
-    const indexClass = classEls[i]
-
-    if(classEls[i].id === classname){
+  for(const child of classesContainer.children){
+    child.classList.remove("currentClass")
+    if(child.id === classname){
       break
     }else{
-      indexClass.classList.add("classOver")
+      child.classList.add("classOver")
     }
   }
+
+  classEl.classList.add("currentClass")
 
 }
 

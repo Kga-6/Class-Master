@@ -157,7 +157,7 @@ const App = async() => {
   schedule = await fetchSchedule() 
 
   const todayDate = new Date()
-  const weekDay = "Monday"//week[todayDate.getDay()]
+  const weekDay = week[todayDate.getDay()]
 
   if(localStorage.getItem(weekDay)){
     const weekStorage = JSON.parse(localStorage.getItem(weekDay))

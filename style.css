@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,500;1,400;1,500&family=Teko:wght@500&display=swap');
+
+
 body{
   display: flex;
   justify-content: center;
@@ -5,6 +8,11 @@ body{
   flex-direction: column;
   text-align: center;
   margin: 0;
+}
+
+#timer{
+  font-size: 27px;
+  font-family: 'Rubik', sans-serif;
 }
 
 #week-container{
