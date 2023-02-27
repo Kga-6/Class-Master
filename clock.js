@@ -2,6 +2,8 @@ const timerEl = document.getElementById("timer")
 let countdown
 let isSchoolOver = false
 
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
 const timeChain = {
 
   test:new Date().setHours(24,33,0),
@@ -52,8 +54,15 @@ function currentClass(classname){
 
 function mainFunction(myLunch){
 
-  let myTime = new Date().getTime()
+  let myDate = new Date()
+  let myTime = myDate.getTime()
   let timeleft
+
+  if(weekday[myDate.getDay()] == "Sunday" || weekday[myDate.getDay()] == "Saturday"){
+    timerEl.textContent = "No school today"
+    weekend()
+    return
+  }
 
   if(timeChain.warning-myTime >= 0){
     console.log("warning bell")

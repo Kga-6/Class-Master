@@ -10,7 +10,35 @@
 </head>
 <body>
 
-  <h1>Absegami High School Schedule</h1>
+  <h1>Absegami High School</h1>
+
+  <div class="week-container-class" id="week-container">
+    <button class="week week-day-selected" id="Monday">
+      <p class="week-day">Mon</p>
+      <br>
+      <p class="week-schedule-day" id="week-schedule-Monday">A</p>
+    </button>
+    <button class="week" id="Tuesday">
+      <p class="week-day">Tue</p>
+      <br>
+      <p class="week-schedule-day" id="week-schedule-Tuesday">B</label>
+    </button>
+    <button class="week" id="Wednesday">
+      <p class="week-day">Wed</p>
+      <br>
+      <p class="week-schedule-day" id="week-schedule-Wednesday">C</label>
+    </button>
+    <button class="week" id="Thursday">
+      <p class="week-day">Thu</p>
+      <br>
+      <p class="week-schedule-day" id="week-schedule-Thursday">D</label>
+    </button>
+    <button class="week" id="Friday">
+      <p class="week-day">Fri</p>
+      <br>
+      <p class="week-schedule-day" id="week-schedule-Friday">A</label>
+    </button>
+  </div>
 
   <p id="timer">00:00:00</p>
   <select name="Days" id="select-school-day">
@@ -26,6 +54,7 @@
 
   <script src="./utils/fetch.js"></script> 
   <script src="./clock.js"></script>
+  <script src="./week.js"></script>
 
   <script src="./index.js"></script>
 

@@ -7,6 +7,40 @@ body{
   margin: 0;
 }
 
+#week-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+.week{
+  cursor: pointer;
+  border-style: none;
+  padding: 0.5rem;
+  background-color: white;
+  width: 50px;
+  height: 75px;
+}
+.week:hover{
+  background-color: rgba(0, 0, 0, 0.021);
+}
+.week-day{
+  font-weight: bold;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin: 0;
+}
+.week-schedule-day{
+  font-weight: lighter;
+  font-size: 0.75rem;
+  margin: 0;
+}
+.week-day-selected{
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.2rem;
+}
+
 #classes-container{
   background-color: rgb(255, 255, 255);
 }

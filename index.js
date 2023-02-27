@@ -1,12 +1,18 @@
 const classesContainer = document.getElementById("classes-container")
 const selectSchoolDay = document.getElementById("select-school-day")
 
+let studentData
+let schedule
+
+let selectedWeek
+const week = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
 let currentDay = "A"
 
-function setClasses(studentData,schedule){
+function setClasses(){
   let meetClasses = []
   let olderList = []
-  let myLunch = studentData.Lunch[schedule.CurrentDay]
+  let myLunch = studentData.Lunch[currentDay]
   let addedLunch = false
   let block = 1
 
@@ -21,7 +27,7 @@ function setClasses(studentData,schedule){
   studentData.classes.forEach(myClass => {
 
     myClass.meeting.forEach(day => {
-      if(day == schedule.CurrentDay){
+      if(day == currentDay){
 
         meetClasses.push(myClass)
 
@@ -31,7 +37,7 @@ function setClasses(studentData,schedule){
   })
 
   // older sort the student classes
-  schedule.DaysMeet[schedule.CurrentDay].forEach(index => {
+  schedule.DaysMeet[currentDay].forEach(index => {
     meetClasses.forEach(myClass => {
       if(myClass.period === index){
          
@@ -131,25 +137,54 @@ function setClasses(studentData,schedule){
 
 // This function is called when school is over [caller: clock.js]
 function dismissal(){
-  console.log("School is over!")
+
 }
 
-const App = async() => {
-  let studentData = await fetchStudentData()
-  let schedule = await fetchSchedule() 
+function weekend(){
 
-  selectSchoolDay.value = schedule.CurrentDay
+}
+
+function updateApp(){
 
   // This function will set the classes the student will meet 
   setClasses(studentData,schedule)
-  startClock(studentData.Lunch[schedule.CurrentDay])
+  startClock(studentData.Lunch[currentDay])
 
-  selectSchoolDay.addEventListener("change",function(event){
-    schedule.CurrentDay = event.target.value
+}
 
-    // This function will set the classes the student will meet 
-    setClasses(studentData,schedule)
-    startClock(studentData.Lunch[schedule.CurrentDay])
+const App = async() => {
+  studentData = await fetchStudentData()
+  schedule = await fetchSchedule() 
+
+  const todayDate = new Date()
+  const weekDay = week[todayDate.getDay()]
+
+  if(localStorage.getItem(weekDay)){
+    const weekStorage = JSON.parse(localStorage.getItem(weekDay))
+    currentDay = weekStorage.Day
+    select(weekDay)
+  }else{ 
+    if(weekDay=="Saturday"||weekDay=="Sunday"){
+      unselectAll()
+    }else{
+      select(weekDay)
+    }
+    currentDay = "A"
+  }
+
+  selectSchoolDay.value = currentDay
+  selectedWeek = weekDay
+
+  updateApp()
+
+  selectSchoolDay.addEventListener('change',function(event){
+    currentDay = event.target.value
+
+    if(selectedWeek){
+      setStorage(selectedWeek,"Day",event.target.value)
+    }
+
+    updateApp()
 
   })
 
