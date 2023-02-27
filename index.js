@@ -157,7 +157,7 @@ const App = async() => {
   schedule = await fetchSchedule() 
 
   const todayDate = new Date()
-  const weekDay = week[todayDate.getDay()]
+  const weekDay = "Monday"//week[todayDate.getDay()]
 
   if(localStorage.getItem(weekDay)){
     const weekStorage = JSON.parse(localStorage.getItem(weekDay))
@@ -176,6 +176,7 @@ const App = async() => {
   selectedWeek = weekDay
 
   updateApp()
+  selectWeeklock(weekDay) // special highlight for the current week day
 
   selectSchoolDay.addEventListener('change',function(event){
     currentDay = event.target.value

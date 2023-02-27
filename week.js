@@ -44,6 +44,17 @@ function unselectAll(){
   }
 }
 
+function selectWeeklock(week){
+  if(week=="Saturday"||week=="Sunday"){
+    return
+  }
+  for (const button of container.children) {
+    button.classList.remove("week-day-selected-lock")
+  }
+  const element = document.getElementById(week)
+  element.classList.add("week-day-selected-lock")
+}
+
 function select(week){
   if(week=="Saturday"||week=="Sunday"){
     return

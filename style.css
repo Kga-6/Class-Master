@@ -35,10 +35,18 @@ body{
   font-size: 0.75rem;
   margin: 0;
 }
+
+.week-day-selected-lock{
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 0.2rem;
+  border-color: rgb(233, 233, 233);
+}
 .week-day-selected{
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-radius: 0.2rem;
+  border-color: black;
 }
 
 #classes-container{
