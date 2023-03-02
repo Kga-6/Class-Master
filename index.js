@@ -9,19 +9,6 @@ const week = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Satur
 
 let currentDay = "A"
 
-function meal(animal) {
-    animal.food = animal.food + 10;
-}
-
-var dog = {
-    food: 10
-};
-meal(dog);
-meal(dog);
-
-console.log(dog.food);
-
-
 function setClasses(){
   let meetClasses = []
   let olderList = []
@@ -83,22 +70,45 @@ function setClasses(){
   // append classes to the container
 
   const zeroPeriod = document.createElement('div')
-  zeroPeriod.textContent = `Zero Period | ${schedule.BellSchedule.Time.ZeroPeriod.S1[0]}-${schedule.BellSchedule.Time.ZeroPeriod.S2[1]}`
+  const zeroName = document.createElement("label")
+  const zeroTime = document.createElement("label")
+  zeroName.textContent = "Zero Period"
+  zeroTime.textContent = `${schedule.BellSchedule.Time.ZeroPeriod.S1[0]}-${schedule.BellSchedule.Time.ZeroPeriod.S2[1]}`
+  zeroPeriod.append(zeroName)
+  zeroPeriod.append(zeroTime)
   classesContainer.append(zeroPeriod)
   zeroPeriod.classList.add("class")
   zeroPeriod.id = "zeroperiod"
+  zeroName.classList.add("class-name")
+  zeroTime.classList.add("class-time")
 
   const homeroom = document.createElement('div')
-  homeroom.textContent = `Homeroom ${schedule.BellSchedule.Time.Homeroom[0]}-${schedule.BellSchedule.Time.Homeroom[1]}`
+  const homeName = document.createElement("label")
+  const homeTime = document.createElement("label")
+  homeName.textContent = "Homeroom"
+  homeTime.textContent = `${schedule.BellSchedule.Time.Homeroom[0]}-${schedule.BellSchedule.Time.Homeroom[1]}`
+  homeroom.append(homeName)
+  homeroom.append(homeTime)
   classesContainer.append(homeroom)
   homeroom.classList.add("class")
   homeroom.id = "homeroom"
+  homeName.classList.add("class-name")
+  homeTime.classList.add("class-time")
+
 
   olderList.forEach(myClass => {
     const div = document.createElement('div')
+    const className = document.createElement("label")
+    const timeLine = document.createElement("label")
+    div.append(className)
+    div.append(timeLine)
     div.classList.add("myClass","class")
+    className.classList.add("class-name")
+    timeLine.classList.add("class-time")
 
     let timeText = ""
+
+    className.textContent = myClass.class
 
 
     // Get the class time
@@ -110,7 +120,8 @@ function setClasses(){
       }else if(myLunch === "2"){
         timeText = `${schedule.BellSchedule.Time.SecondLunch[0]}-${schedule.BellSchedule.Time.SecondLunch[1]}`
       }
-      div.textContent = `${myClass.class} | ${timeText}`
+      timeLine.textContent = timeText
+      //div.textContent = `${myClass.class} | ${timeText}`
       
     }else{
 
@@ -138,7 +149,8 @@ function setClasses(){
         timeText = `${schedule.BellSchedule.Time.block5[0]}-${schedule.BellSchedule.Time.block5[1]}`
       }
       
-      div.textContent = `${myClass.period}pd - ${myClass.class} | ${timeText}`
+      //div.textContent = `${myClass.period}pd - ${myClass.class} | ${timeText}`
+      timeLine.textContent = timeText
 
       block += 1
     }
