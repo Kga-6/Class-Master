@@ -9,6 +9,19 @@ const week = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Satur
 
 let currentDay = "A"
 
+function meal(animal) {
+    animal.food = animal.food + 10;
+}
+
+var dog = {
+    food: 10
+};
+meal(dog);
+meal(dog);
+
+console.log(dog.food);
+
+
 function setClasses(){
   let meetClasses = []
   let olderList = []
