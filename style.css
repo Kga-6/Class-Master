@@ -80,7 +80,7 @@ main{
 }
 
 .week-day-selected-lock{
-  border-style: dashed;
+  border-style: solid;
   border-width: 2px;
   border-color: rgb(245, 245, 245);
 }

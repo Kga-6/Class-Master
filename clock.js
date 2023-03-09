@@ -68,6 +68,9 @@ function mainFunction(myLunch){
     timeleft = timeChain.warning - myTime;
   }else if(timeChain.zeroPeriod-myTime >= 0){
     console.log("zeroPeriod bell")
+
+    debugLog("zero Period")
+
     timeleft = timeChain.zeroPeriod - myTime;
     currentClass("zeroperiod")
   }else if(timeChain.homeroom-myTime >= 0){
@@ -104,9 +107,11 @@ function mainFunction(myLunch){
   }else if(myLunch==="2"){
 
     if(timeChain.lunch2-myTime >= 0){
+      debugLog("lunch2")
       timeleft = timeChain.lunch2 - myTime;
       currentClass("lunch")
     }else if(timeChain.lunchA-myTime >= 0){
+      debugLog("lunchA")
       timeleft = timeChain.lunchA - myTime;
       currentClass("block4")
     }else if(timeChain.block5-myTime >= 0){
