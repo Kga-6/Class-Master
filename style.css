@@ -144,3 +144,7 @@ main{
   color: rgb(216, 216, 216);
   text-decoration: line-through;
 }
+
+.droppedClass{
+  display: none;
+}

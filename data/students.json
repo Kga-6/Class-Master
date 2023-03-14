@@ -7,53 +7,62 @@
     "C":"2",
     "D":"1"
   },
+  "seniorOpt":"second",
   "classes":[
     {
-      "class":"Dropped 1",
+      "class":"Dropped",
       "period":1,
       "teacher":"Unknown",
+      "dropped":true,
       "meeting":["A","C","D"]
     },
     {
       "class":"Dropped",
       "period":2,
       "teacher":"Unknown",
+      "dropped":true,
       "meeting":["A","B","D"]
     },
     {
       "class":"Dropped",
       "period":3,
       "teacher":"Unknown",
+      "dropped":true,
       "meeting":["A","B","C"]
     },
     {
       "class":"Dropped",
       "period":4,
       "teacher":"Unknown",
+      "dropped":true,
       "meeting":["B","C","D"]
     },
     {
       "class":"Contemporary Literature",
       "period":5,
       "teacher":"Karly LoSasso",
+      "dropped":false,
       "meeting":["A","C","D"]
     },
     {
       "class":"Health and Phys Ed 4",
       "period":6,
       "teacher":"Pat Esemplare",
+      "dropped":false,
       "meeting":["A","B","D"]
     },
     {
       "class":"Consumer Math",
       "period":7,
       "teacher":"Kimberly Becher",
+      "dropped":false,
       "meeting":["A","B","C"]
     },
     {
       "class":"Filem Appreciation",
       "period":8,
       "teacher":"Ernie Rockelman",
+      "dropped":false,
       "meeting":["B","C","D"]
     }
   ]
