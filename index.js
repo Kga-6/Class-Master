@@ -3,6 +3,7 @@ const selectSchoolDay = document.getElementById("select-school-day")
 
 let studentData
 let schedule
+let classPublicData
 
 let selectedWeek
 const week = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -103,11 +104,19 @@ function setClasses(){
     const div = document.createElement('div')
     const className = document.createElement("label")
     const timeLine = document.createElement("label")
-    div.append(className)
-    div.append(timeLine)
+    const icon = document.createElement("div")
+    const infoContaienr = document.createElement("div")
+
+    div.append(icon)
+    div.append(infoContaienr)
+    infoContaienr.append(className)
+    infoContaienr.append(timeLine)
+
     div.classList.add("myClass","class")
     className.classList.add("class-name")
     timeLine.classList.add("class-time")
+    icon.classList.add("class-icon")
+    infoContaienr.classList.add("info-container")
 
     if(myClass.dropped == true){
       div.classList.add("droppedClass")
@@ -116,6 +125,9 @@ function setClasses(){
     let timeText = ""
 
     className.textContent = myClass.class
+    if(classPublicData[myClass.class]){
+      icon.textContent = classPublicData[myClass.class]
+    }
 
 
     // Get the class time
@@ -187,6 +199,9 @@ function updateApp(){
 const App = async() => {
   studentData = await fetchStudentData()
   schedule = await fetchSchedule() 
+  classPublicData = await fetchPublicData()
+
+  console.log(classPublicData)
 
   const todayDate = new Date()
   const weekDay = week[todayDate.getDay()]

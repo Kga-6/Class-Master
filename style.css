@@ -10,7 +10,7 @@ h1,h2,h3,h4,h5,h6,p{
 }
 
 #App{
-  background: linear-gradient(0.25turn, #a63f8c, #f63c3c);
+  background: linear-gradient(0.25turn, #3f74a6, #3cf6ed);
   max-width: 500px;
   height: 100vh;
   margin-right: 15px;
@@ -48,7 +48,7 @@ main{
 
 #timer{
   color: white;
-  font-size: 27px;
+  font-size: 2rem;
   font-family: 'Rubik', sans-serif;
 }
 
@@ -77,14 +77,15 @@ main{
   background-color: rgba(0, 0, 0, 0.021);
 }
 .week-day{
-  font-weight: bold;
+  font-weight: lighter;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin: 0;
 }
 .week-schedule-day{
-  font-weight: lighter;
-  font-size: 0.75rem;
+  font-weight: bolder;
+  font-size: 1rem;
   margin: 0;
+  color: rgb(87, 87, 87);
 }
 
 .week-day-selected-lock{
@@ -95,8 +96,8 @@ main{
 .week-day-selected{
   border-style: solid;
   border-width: 1.5px;
-  border-color: rgb(0, 0, 0);
-  background: linear-gradient(0.25turn, #ffd0f3, #ffcdcd);
+  border-color: rgb(201, 201, 201);
+  background: linear-gradient(25turn, #e4ffff, #7ceee8);
 }
 
 #classes-container{
@@ -107,13 +108,14 @@ main{
 
 .class{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-self: center;
-  justify-content: center;
+  justify-content: start;
   color: rgb(0, 0, 0);
   height: 75px;
   width: 100%;
   background-color: rgb(255, 255, 255);
+  
   border-top-style: solid;
   border-width: 1px;
   border-color: rgb(223, 223, 223);
@@ -124,11 +126,19 @@ main{
   font-weight: bold;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-bottom: 0.5rem;
-  padding-left: 1rem;
 }
 .class-time{
   font-size: 14px;
-  padding-left: 1rem;
+}
+.class-icon{
+  align-self: center;
+  font-size: 1.75rem;
+  padding: 0.75rem;
+}
+.info-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .myClass{
@@ -136,8 +146,9 @@ main{
 }
 
 .currentClass{
-  border-style: solid;
-  border-width: 1px;
+  border-bottom-style: solid;
+  border-width: 2px;
+  border-color: rgb(167, 167, 167);
 }
 
 .classOver{

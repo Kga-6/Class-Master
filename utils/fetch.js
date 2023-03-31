@@ -9,3 +9,9 @@ const fetchSchedule = async () => {
   const scheduleJSON = await schedule.json()
   return scheduleJSON
 }
+
+const fetchPublicData = async () => {
+  const schedule = await fetch('./data/classPublicData.json')
+  const scheduleJSON = await schedule.json()
+  return scheduleJSON
+}

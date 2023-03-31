@@ -6,11 +6,6 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 
 const timeChain = {
 
-  test:new Date().setHours(24,33,0),
-  test1:new Date().setHours(24,34,0),
-  test2:new Date().setHours(24,35,0),
-  test3:new Date().setHours(24,36,0),
-
   warning:new Date().setHours(7,35,0),
   zeroPeriod:new Date().setHours(8,35,0),
   homeroom:new Date().setHours(8,48,0),
@@ -19,14 +14,19 @@ const timeChain = {
   block2:new Date().setHours(10,32,0),
   block3:new Date().setHours(11,24,0),
 
-  lunch1:new Date().setHours(11,48,0),
-  lunchB:new Date().setHours(12,40,0),
+  // BLOCK 4
 
-  lunch2:new Date().setHours(12,16,0),
-  lunchA:new Date().setHours(12,40,0),
+    // Second Lunch
+    lunch2:new Date().setHours(12,40,0),
+    lunchA:new Date().setHours(12,16,0),
+
+    // First Lunch
+    lunch1:new Date().setHours(11,48,0),
+    lunchB:new Date().setHours(12,40,0),
+
+  //
 
   block5:new Date().setHours(13,32,0),
-
   dismissal:new Date().setHours(14,24,0),
 }
 
@@ -36,6 +36,7 @@ function formtTime(time){
 
 function currentClass(classname){
   const classEl = document.getElementById(classname)
+  if(!classEl) return;
 
   // add a new className to the classes that are over for styling
   for(const child of classesContainer.children){
@@ -63,87 +64,109 @@ function mainFunction(myLunch){
     return
   }
 
-  if(timeChain.warning-myTime >= 0){
-    console.log("warning bell")
-    timeleft = timeChain.warning - myTime;
-  }else if(timeChain.zeroPeriod-myTime >= 0){
-    console.log("zeroPeriod bell")
+  if(studentData.seniorOpt == false || studentData.seniorOpt == "first" ){
 
-    debugLog("zero Period")
-
-    timeleft = timeChain.zeroPeriod - myTime;
-    currentClass("zeroperiod")
-  }else if(timeChain.homeroom-myTime >= 0){
-    timeleft = timeChain.homeroom - myTime;
-    currentClass("homeroom")
-  }else if(timeChain.block1-myTime >= 0){
-    timeleft = timeChain.block1 - myTime;
-    currentClass("block1")
-  }else if(timeChain.block2-myTime >= 0){
-    timeleft = timeChain.block2 - myTime;
-    currentClass("block2")
-  }else if(timeChain.block3-myTime >= 0){
-    timeleft = timeChain.block3 - myTime;
-    currentClass("block3")
-  }else if(myLunch==="1"){
-
-    if(timeChain.lunch1-myTime >= 0){
-      timeleft = timeChain.lunch1 - myTime;
-      currentClass("lunch")
-    }else if(timeChain.lunchB-myTime >= 0){
-      timeleft = timeChain.lunchB - myTime;
-      currentClass("block4")
-    }else if(timeChain.block5-myTime >= 0){
-      timeleft = timeChain.block5 - myTime;
-      currentClass("block5")
-    }else if(timeChain.dismissal-myTime >= 0){
-      timeleft = timeChain.dismissal - myTime;
-      currentClass("block6")
-    }else{
-      isSchoolOver = true
-      clearInterval(countdown)
+    if(timeChain.warning-myTime >= 0){
+      console.log("warning bell")
+      timeleft = timeChain.warning - myTime;
+    }else if(timeChain.zeroPeriod-myTime >= 0){
+      console.log("zeroPeriod bell")
+      timeleft = timeChain.zeroPeriod - myTime;
+      currentClass("zeroperiod")
+    }else if(timeChain.homeroom-myTime >= 0){
+      timeleft = timeChain.homeroom - myTime;
+      currentClass("homeroom")
+    }else if(timeChain.block1-myTime >= 0){
+      timeleft = timeChain.block1 - myTime;
+      currentClass("block1")
+    }else if(timeChain.block2-myTime >= 0){
+      timeleft = timeChain.block2 - myTime;
+      currentClass("block2")
+    }else if(timeChain.block3-myTime >= 0){
+      timeleft = timeChain.block3 - myTime;
+      currentClass("block3")
+    }else if(myLunch==="1"){
+  
+      if(timeChain.lunch1-myTime >= 0){
+        timeleft = timeChain.lunch1 - myTime;
+        currentClass("lunch")
+      }else if(timeChain.lunchB-myTime >= 0){
+        timeleft = timeChain.lunchB - myTime;
+        currentClass("block4")
+      }else if(timeChain.block5-myTime >= 0){
+        timeleft = timeChain.block5 - myTime;
+        currentClass("block5")
+      }else if(timeChain.dismissal-myTime >= 0){
+        timeleft = timeChain.dismissal - myTime;
+        currentClass("block6")
+      }else{
+        isSchoolOver = true
+        clearInterval(countdown)
+      }
+  
+    }else if(myLunch==="2"){
+  
+      if(timeChain.lunch2-myTime >= 0){
+        timeleft = timeChain.lunch2 - myTime;
+        currentClass("lunch")
+      }else if(timeChain.lunchA-myTime >= 0){
+        timeleft = timeChain.lunchA - myTime;
+        currentClass("block4")
+      }else if(timeChain.block5-myTime >= 0){
+        timeleft = timeChain.block5 - myTime;
+        currentClass("block5")
+      }else if(timeChain.dismissal-myTime >= 0){
+        timeleft = timeChain.dismissal - myTime;
+        currentClass("block6")
+      }else{
+        isSchoolOver = true
+        clearInterval(countdown)
+      }
     }
 
-  }else if(myLunch==="2"){
+  }else{
+    if(myLunch==="1"){
+  
+      if(timeChain.lunch1-myTime >= 0){
+        timeleft = timeChain.lunch1 - myTime;
+        currentClass("lunch")
+      }else if(timeChain.lunchB-myTime >= 0){
+        timeleft = timeChain.lunchB - myTime;
+        currentClass("block4")
+      }else if(timeChain.block5-myTime >= 0){
+        timeleft = timeChain.block5 - myTime;
+        currentClass("block5")
+      }else if(timeChain.dismissal-myTime >= 0){
+        timeleft = timeChain.dismissal - myTime;
+        currentClass("block6")
+      }else{
+        isSchoolOver = true
+        clearInterval(countdown)
+      }
+  
+    }else if(myLunch==="2"){
 
-    if(timeChain.lunch2-myTime >= 0){
-      debugLog("lunch2")
-      timeleft = timeChain.lunch2 - myTime;
-      currentClass("lunch")
-    }else if(timeChain.lunchA-myTime >= 0){
-      debugLog("lunchA")
-      timeleft = timeChain.lunchA - myTime;
-      currentClass("block4")
-    }else if(timeChain.block5-myTime >= 0){
-      timeleft = timeChain.block5 - myTime;
-      currentClass("block5")
-    }else if(timeChain.dismissal-myTime >= 0){
-      timeleft = timeChain.dismissal - myTime;
-      currentClass("block6")
-    }else{
-      isSchoolOver = true
-      clearInterval(countdown)
+      if(timeChain.lunchA-myTime >= 0){
+        timeleft = timeChain.lunchA - myTime;
+        currentClass("block4")
+      }else if(timeChain.lunch2-myTime >= 0){
+        timeleft = timeChain.lunch2 - myTime;
+        currentClass("lunch")
+      }else if(timeChain.block5-myTime >= 0){
+        timeleft = timeChain.block5 - myTime;
+        currentClass("block5")
+      }else if(timeChain.dismissal-myTime >= 0){
+        timeleft = timeChain.dismissal - myTime;
+        currentClass("block6")
+      }else{
+        isSchoolOver = true
+        clearInterval(countdown)
+      }
+
     }
-
-  }else if(myLunch==="test"){
-
-    if(timeChain.test-myTime >= 0){
-      timeleft = timeChain.test - myTime;
-    }else if(timeChain.test1-myTime >= 0){
-      timeleft = timeChain.test1 - myTime;
-      currentClass("block4")
-    }else if(timeChain.test2-myTime >= 0){
-      timeleft = timeChain.test2 - myTime;
-      currentClass("block5")
-    }else if(timeChain.test3-myTime >= 0){
-      timeleft = timeChain.test3 - myTime;
-      currentClass("block6")
-    }else{
-      isSchoolOver = true
-      clearInterval(countdown)
-    }
-
+    
   }
+
 
   // Calculating the days, hours, minutes and seconds left
   const days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
