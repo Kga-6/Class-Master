@@ -105,13 +105,13 @@ function mainFunction(myLunch){
       }
   
     }else if(myLunch==="2"){
-  
-      if(timeChain.lunch2-myTime >= 0){
-        timeleft = timeChain.lunch2 - myTime;
-        currentClass("lunch")
-      }else if(timeChain.lunchA-myTime >= 0){
+
+      if(timeChain.lunchA-myTime >= 0){
         timeleft = timeChain.lunchA - myTime;
         currentClass("block4")
+      }else if(timeChain.lunch2-myTime >= 0){
+        timeleft = timeChain.lunch2 - myTime;
+        currentClass("lunch")
       }else if(timeChain.block5-myTime >= 0){
         timeleft = timeChain.block5 - myTime;
         currentClass("block5")
