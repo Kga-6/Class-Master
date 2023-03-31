@@ -192,7 +192,7 @@ function updateApp(){
 
   // This function will set the classes the student will meet 
   setClasses(studentData,schedule)
-  startClock(studentData.Lunch[currentDay])
+  startClock(studentData.Lunch[currentDay],studentData.seniorOpt)
 
 }
 
